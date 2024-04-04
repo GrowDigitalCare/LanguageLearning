@@ -87,7 +87,7 @@
                                   <td>{{ $test->total_mcq }}</td>
                                   <td>{{ $test->total_marks }}</td>
                                   <td>{{ $test->pass_marks }}</td>
-                                  <td>{{ $test->time_dur }}</td>
+                                  {{-- <td>{{ $test->time_dur }}</td> --}}
                                  <td>{{ $test->level }}</td>
                                   <td>
                                       <div style="display: flex; align-items: center;">

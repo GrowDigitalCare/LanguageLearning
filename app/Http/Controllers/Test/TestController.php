@@ -47,7 +47,7 @@ class TestController extends Controller
             'title' => $request->input('title'),
             'slug' => $slug,
             'description' => $request->input('description'),
-            'time_dur' => $request->input('time_dur'),
+            'time_dur' => $request->input('time_dur') ?? 'null',
             'total_mcq' => $request->input('total_mcq'),
             'pass_marks' => $request->input('pass_marks'),
             'total_marks' => $request->input('total_marks'),
@@ -79,7 +79,7 @@ class TestController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'nullable|string',
             'level' => 'required|in:beginner,intermediate,expert',
-            'time_dur' => 'required|string',
+            'time_dur' => 'nullable|string',
             'total_mcq' => 'required|string',
             'pass_marks' => 'required|string',
             'total_marks' => 'required|string',
@@ -94,7 +94,7 @@ class TestController extends Controller
         $test->title = $request->input('title');
         $test->slug = $slug;
         $test->description = $request->input('description');
-        $test->time_dur = $request->input('time_dur');
+        $test->time_dur = $request->input('time_dur') ?? 'null';
         $test->total_mcq = $request->input('total_mcq');
         $test->pass_marks = $request->input('pass_marks');
         $test->languageid = $request->input('languageid');

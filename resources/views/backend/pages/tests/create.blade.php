@@ -59,7 +59,7 @@
                                                             </div>
                                                             {{-- <input type="hidden" name="description" id="hidden-editor-input"> --}}
                                                         </div>
-                                                    <div class="col-12">
+                                                    {{-- <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="time_dur">Test Duration</label>
                                                             <div class="input-group">
@@ -73,7 +73,7 @@
                                                             </div>
                                                             @enderror
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     
                                                     <div class="col-12">
                                                         <div class="form-group">
