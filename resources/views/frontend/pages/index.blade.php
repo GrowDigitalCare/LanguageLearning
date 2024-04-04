@@ -129,7 +129,7 @@
                     </div>
                 </div>
                 <div class="service__content">
-                    <h3><a href="course-details.html">{{ $language->name }}</a></h3>
+                    <h3><a href="{{ route('language_test', ['slug' => $language->slug]) }}">{{ $language->name }}</a></h3>
                     <p>Presented By EduRock</p>
                 </div>
                 <div class="service__small__img">

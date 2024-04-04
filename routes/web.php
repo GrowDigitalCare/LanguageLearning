@@ -240,8 +240,8 @@ Route::get('/clear-cache', function () {
 
     return "Cache cleared successfully.";
 });
-Route::get('/', function () {
-    return view('frontend.pages.index');
+Route::get('/test', function () {
+    return view('frontend.pages.test');
 });
 
 Route::get('/login', function () {
@@ -265,7 +265,10 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/lesson/{slug}/video', "showVideo")->name('lesson.video');
     Route::get('instructordetail/{name}/{id}', 'instructordetail')->name('instructordetail');
 
-
+    Route::get('language_test/{slug}', 'showTest')->name('language_test');
+    Route::post('/language/{languageId}/test/submit', 'submitTest')->name('test.submit');
+    Route::get('testresult', 'testresult')->name('testresult');
 
 
 });
+// Route::get('/quiz', [HomeController::class, 'showQuiz'])->name('quiz');
