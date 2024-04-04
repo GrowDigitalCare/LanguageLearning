@@ -31,9 +31,10 @@ class CourseDetail extends Model
     }
 
 
+
     public function lectures()
 {
-    return $this->hasMany(Lecture::class, 'course_subcategory_id', 'subcategory_id');
+    return $this->hasMany(CourseLecture::class, 'course_id');
 }
 
 

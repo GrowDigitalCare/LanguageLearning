@@ -5,16 +5,21 @@ namespace App\Http\Controllers\Frontend;
 use DB;
 use App\Models\Team;
 use App\Models\Quote;
+use App\Models\Course;
 use App\Models\Contact;
-use App\Models\Package;
 USe Session;
 
+use App\Models\Package;
 use App\Models\Project;
 use App\Models\Service;
+use App\Models\Language;
+use App\Models\Instructor;
 use App\Models\MediaCenter;
 use App\Models\Testimonial;
+use App\Models\CourseDetail;
 use App\Models\PropertyType;
 use Illuminate\Http\Request;
+use App\Models\CourseLecture;
 use App\Models\ServiceCategory;
 use App\Models\projectreviewtbl;
 use App\Http\Controllers\Controller;
@@ -51,8 +56,8 @@ class HomeController extends Controller
 
     public function index()
     {   
-       
-        return view('frontend.pages.index');
+       $language = Language::all();
+        return view('frontend.pages.index',compact('language'));
     }
     
 
@@ -67,26 +72,58 @@ class HomeController extends Controller
     }
     public function course()
     {
-        return view('frontend.pages.course');
+        $course = Course::paginate(6);
+        return view('frontend.pages.course',compact('course'));
     }
-
-    public function coursedetail()
+    public function instructordetail($name,$id)
     {
-        return view('frontend.pages.coursedetail');
+        $related = Course::all();
+        $instructor = Instructor::where('id', $id)->first();
+        return view('frontend.pages.instructordetail', compact('related', 'instructor'));
     }
- 
+    
+public function courseDetails($slug)
+   {
+       $subCategory = Course::where('slug', $slug)
+           ->with(['lectures']) // Include the 'reviews' relationship
+           ->firstOrFail();
+   
+       $courseDetails = CourseDetail::where('course_id', $subCategory->id)->firstOrFail();
+       $relatedCourses = CourseDetail::where('course_id', $subCategory->id)
+           ->where('id', '!=', $courseDetails->id)
+           ->limit(6)
+           ->get();
+        //    $reviewcount = CourseReview::where('status', 'active')->count();
+       $lectureCount = CourseLecture::where('course_id', $subCategory->id)->count();
+   
+       return view('frontend.pages.coursedetail', compact('subCategory', 'courseDetails', 'relatedCourses', 'lectureCount'
+    //    ,'reviewcount'
+    ));
+   }
+   public function showVideo($slug)
+   {
+       // Fetch the course lecture based on the slug
+       $lecture = CourseLecture::where('slug', $slug)->firstOrFail();
+   
+       // Fetch all lectures related to the course of this lecture
+       $relatedLectures = CourseLecture::where('course_id', $lecture->course_id)->get();
+   
+       return view('frontend.pages.lecture', compact('lecture', 'relatedLectures'));
+   }
+   
+   
     public function mediacenter()
     {
-        $fetch = MediaCenter::paginate(6);
-        return view('frontend.pages.mediacenter', compact('fetch'));
+        $mediacenter = MediaCenter::paginate(6);
+        return view('frontend.pages.mediacenter', compact('mediacenter'));
     }
 
 
     public function mediacenterdetail($slug)
     {
-        $related = MediaCenter::where('slug', '!=', $slug)->limit(8)->get();
-        $fetch = MediaCenter::where('slug', $slug)->first();
-        return view('frontend.pages.mediacenterdetail', compact('related', 'fetch'));
+        $related = MediaCenter::where('slug', '!=', $slug)->limit(4)->get();
+        $mediacenter = MediaCenter::where('slug', $slug)->first();
+        return view('frontend.pages.mediacenterdetail', compact('related', 'mediacenter'));
     }
 
    

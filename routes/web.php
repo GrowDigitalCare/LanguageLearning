@@ -1,22 +1,24 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Test\TestController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Backend\AdminDashboardController;
+use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Test\QuestionController;
+use App\Http\Controllers\Backend\SigninController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Backend\MediaCenterController;
 use App\Http\Controllers\Backend\Course\CourseController;
-use App\Http\Controllers\Backend\Course\CourseDetailController;
-use App\Http\Controllers\Backend\Course\CourseInstructorController;
-use App\Http\Controllers\Backend\Course\CourseLanguageController;
-use App\Http\Controllers\Backend\Course\CourseLectureController;
+use App\Http\Controllers\Backend\AdminDashboardController;
 use App\Http\Controllers\Backend\Course\CourseQuizController;
 use App\Http\Controllers\Backend\Course\CourseTestController;
-use App\Http\Controllers\Backend\MediaCenterController;
-use App\Http\Controllers\Backend\SigninController;
-use App\Http\Controllers\Frontend\HomeController;
-use Illuminate\Support\Facades\Artisan;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\Course\CourseDetailController;
+use App\Http\Controllers\Backend\Course\CourseLectureController;
+use App\Http\Controllers\Backend\Course\CourseLanguageController;
+use App\Http\Controllers\Backend\Course\CourseInstructorController;
 
 
 
@@ -179,6 +181,31 @@ Route::prefix('coursequiz')->as('coursequiz-')->group(function () {
     });
 });
 
+
+
+Route::prefix('test')->as('test-')->group(function () {
+    Route::controller(TestController::class)->group(function () {
+        Route::get('/create', 'view')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/list', 'show')->name('list');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::put('update/{id}', 'update')->name('update');
+    });
+});
+
+// Route::get('/get-subjects/{departmentId}', [TestController::class, 'getSubjects']);
+//Questions Routes
+Route::prefix('question')->as('question-')->group(function () {
+    Route::controller(QuestionController::class)->group(function () {
+        Route::get('/create', 'create')->name('create');
+        Route::post('/store', 'store')->name('store');
+        Route::get('/list', 'list')->name('list');
+        Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('edit/{id}', 'edit')->name('edit');
+        Route::put('update/{id}', 'update')->name('update');
+    });
+});
 
 
 });

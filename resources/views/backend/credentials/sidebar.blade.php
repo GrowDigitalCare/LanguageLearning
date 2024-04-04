@@ -131,7 +131,20 @@
                 </li> --}}
 
 
-
+                <li class="sidebar-item {{ Route::is('test*') ? 'active' : '' }} has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-bookmark-plus-fill"></i>
+                        <span>Test Your Skills</span>
+                    </a>
+                    <ul class="submenu {{ Route::is('test*') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Route::is('test-list') ? 'active' : '' }}">
+                            <a href="{{ route('test-list') }}">Test</a>
+                        </li>
+                        <li class="submenu-item {{ Route::is('question-list') ? 'active' : '' }}">
+                            <a href="{{ route('question-list') }}">Questions & Options</a>
+                        </li>
+                    </ul>
+                </li>
 
 
 

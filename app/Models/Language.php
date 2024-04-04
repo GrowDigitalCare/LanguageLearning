@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Test;
 use App\Models\Course;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Language extends Model
 {
@@ -21,5 +22,8 @@ class Language extends Model
         return $this->hasMany(Course::class);
     }
 
-
+    public function tests()
+    {
+        return $this->hasMany(Test::class);
+    }
 }

@@ -580,106 +580,18 @@
                               </li>
 
 
-                              <li class="mega__menu position-static">
-                                  <a class="headerarea__has__dropdown" href="course.html">Courses<i class="icofont-rounded-down"></i> </a>
-                                  <div class="headerarea__submenu mega__menu__wrapper">
-
-                                      <div class="row">
-                                          <div class="col-3 mega__menu__single__wrap">
-                                              <h4 class="mega__menu__title"><a href="#">Get Started 1 </a></h4>
-                                              <ul class="mega__menu__item">
-                                                  <li><a href="course.html">Grid <span class="mega__menu__label">All Courses</span></a></li>
-                                                  <li><a href="course-dark.html">Course Grid (Dark)</a></li>
-                                                  <li><a href="course-grid.html">Course Grid</a></li>
-                                                  <li><a href="course-grid-dark.html">Course Grid (Dark)</a></li>
-                                                  <li><a href="course-list.html">Course List</a></li>
-                                                  <li><a href="course-list-dark.html">Course List (Dark)</a></li>
-                                                  
-                                              </ul>
-                                          </div>
-                                          <div class="col-3 mega__menu__single__wrap">
-                                              <h4 class="mega__menu__title"><a href="#">Get Started 2 </a></h4>
-                                              <ul class="mega__menu__item">
-                                                  <li><a href="course-details.html">Course Details</a></li>
-                                                  <li><a href="course-details-dark.html">Course Details (Dark)</a></li>
-                                                  <li><a href="course-details-2.html">Course Details 2</a></li>
-                                                  <li><a href="course-details-2-dark.html">Details 2 (Dark)</a></li>
-                                                  <li><a href="course-details-3.html">Course Details 3</a></li>
-                                                  <li><a href="course-details-3.html">Details 3 (Dark)</a></li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-3 mega__menu__single__wrap">
-                                              <h4 class="mega__menu__title"><a href="#">Get Started 3</a></h4>
-                                              <ul class="mega__menu__item">
-                                                  <li><a href="dashboard/become-an-instructor.html">Become An Instructor</a>
-                                                  <li><a href="dashboard/create-course.html">Create Course <span class="mega__menu__label">Career</span></a></li>
-                                                  <li><a href="instructor.html">Instructor</a></li>
-                                                  <li><a href="instructor-dark.html">Instructor (Dark)</a></li>
-                                                  <li><a href="instructor-details.html">Instructor Details</a></li>
-                                                  <li><a href="lesson.html">Course Lesson<span class="mega__menu__label new">New</span></a></li>
-                                              </ul>
-                                          </div>
-                                          <div class="col-3 mega__menu__single__wrap">
-                                              <div class="mega__menu__img">
-                                                  <a href="#"><img loading="lazy"  src="{{asset('assets')}}/img/mega/mega_menu_1.png" alt="Mega Menu"></a>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                              <li>
+                                  <a href="/course">Courses </a>
+                           
 
                               </li>
 
 
-                          <li><a class="headerarea__has__dropdown" href="dashboard/instructor-dashboard.html">Dashboard
-                                  <i class="icofont-rounded-down"></i>
-                              </a>
-                              <ul class="headerarea__submenu headerarea__submenu--third--wrap">
-                                  <li><a href="https://html.themewin.com/edurock-preview/admin-dashboard.html">Admin <i class="icofont-rounded-right"></i></a>
-                          
-                                      <ul class="headerarea__submenu--third">
-                                          <li><a href="dashboard/admin-dashboard.html">Admin Dashboard</a></li>
-                                          <li><a href="dashboard/admin-profile.html">Admin Profile</a></li>
-                                          <li><a href="dashboard/admin-message.html">Message</a></li>
-                                          <li><a href="dashboard/admin-course.html">Courses</a></li>
-                                          <li><a href="dashboard/admin-reviews.html">Review</a></li>
-                                          <li><a href="dashboard/admin-quiz-attempts.html">Admin Quiz</a></li>
-                                          
-                                          <li><a href="dashboard/admin-settings.html">Settings</a></li>
-                                      </ul>
-                          
-                                  </li>
-                                  <li>
-                                      <a href="dashboard/instructor-dashboard.html">Instructor <i class="icofont-rounded-right"></i></a>
-                                      <ul class="headerarea__submenu--third">
-                                          <li><a href="dashboard/instructor-dashboard.html">Inst. Dashboard</a></li>
-                                          <li><a href="dashboard/instructor-profile.html">Inst. Profile</a></li>
-                                          <li><a href="dashboard/instructor-message.html">Message</a></li>
-                                          <li><a href="dashboard/instructor-wishlist.html">Wishlist</a></li>
-                                          <li><a href="dashboard/instructor-reviews.html">Review</a></li>
-                                          <li><a href="dashboard/instructor-my-quiz-attempts.html">My Quiz</a></li>
-                                          <li><a href="dashboard/instructor-order-history.html">Order History</a></li>
-                                          <li><a href="dashboard/instructor-course.html">My Courses</a></li>
-                                          <li><a href="dashboard/instructor-announcments.html">Announcements</a></li>
-                                          <li><a href="dashboard/instructor-quiz-attempts.html">Quiz Attempts</a></li>
-                                          <li><a href="dashboard/instructor-assignments.html">Assignment</a></li>
-                                          <li><a href="dashboard/instructor-settings.html">Settings</a></li>
-                                      </ul>
-                                  </li>
-                                  <li><a href="dashboard/student-dashboard.html">Student <i class="icofont-rounded-right"></i></a>
-                                      <ul class="headerarea__submenu--third">
-                                          <li><a href="dashboard/student-dashboard.html">Dashboard</a></li>
-                                          <li><a href="dashboard/student-profile.html">Profile</a></li>
-<li><a href="dashboard/student-message.html">Message</a></li>
-                                          <li><a href="dashboard/student-enrolled-courses.html">Enrolled Courses</a></li>
-                                          <li><a href="dashboard/student-wishlist.html">Wishlist</a></li>
-                                          <li><a href="dashboard/student-reviews.html">Review</a></li>
-                                          <li><a href="dashboard/student-my-quiz-attempts.html">My Quiz</a></li>
-                                          <li><a href="dashboard/student-assignments.html">Assignment</a></li>
-                                          <li><a href="dashboard/student-settings.html">Settings</a></li>
-                                      </ul>
-                                  </li>
-                              </ul>
-                          </li>
+                      
+                              <li><a href="/mediacenter">Media Center</a>
+
+                    
+                              </li>
 
                           <li><a class="headerarea__has__dropdown" href="ecommerce/shop.html">eCommerce
                               <i class="icofont-rounded-down"></i>
@@ -1062,57 +974,9 @@
                       </li>
 
                       
-                      <li class="menu-item-has-children "><a href="dashboard/admin-dashboard.html">Dashboard</a>
+                      <li><a href="/mediacenter">Media Center</a>
 
-                          <ul class="dropdown">
-                              <li class="menu-item-has-children">
-                                  <a href="#">Admin</a>
-
-                                  <ul class="dropdown">
-                                      <li><a href="dashboard/admin-dashboard.html">Admin Dashboard</a></li>
-                                      <li><a href="dashboard/admin-profile.html">Admin Profile</a></li>
-                                      <li><a href="dashboard/admin-message.html">Message</a></li>
-                                      <li><a href="dashboard/admin-course.html">Courses</a></li>
-                                      <li><a href="dashboard/admin-reviews.html">Review</a></li>
-                                      <li><a href="dashboard/admin-quiz-attempts.html">Admin Quiz</a></li>
-                                      
-                                      <li><a href="dashboard/admin-settings.html">Settings</a></li>
-                                  </ul>
-                              </li>
-
-                              <li class="menu-item-has-children">
-                                  <a href="#">Instructor</a>
-                                  <ul class="dropdown">
-                                      <li><a href="dashboard/instructor-dashboard.html">Inst. Dashboard</a></li>
-                                      <li><a href="dashboard/instructor-profile.html">Inst. Profile</a></li>
-                                      <li><a href="dashboard/instructor-message.html">Message</a></li>
-                                      <li><a href="dashboard/instructor-wishlist.html">Wishlist</a></li>
-                                      <li><a href="dashboard/instructor-reviews.html">Review</a></li>
-                                      <li><a href="dashboard/instructor-my-quiz-attempts.html">My Quiz</a></li>
-                                      <li><a href="dashboard/instructor-order-history.html">Order History</a></li>
-                                      <li><a href="dashboard/instructor-course.html">My Courses</a></li>
-                                      <li><a href="dashboard/instructor-announcments.html">Announcements</a></li>
-                                      <li><a href="dashboard/instructor-quiz-attempts.html">Quiz Attempts</a></li>
-                                      <li><a href="dashboard/instructor-assignments.html">Assignment</a></li>
-                                      <li><a href="dashboard/instructor-settings.html">Settings</a></li>
-                                  </ul>
-                              </li>
-
-                              <li class="menu-item-has-children">
-                                  <a href="#">Student</a>
-                                  <ul class="dropdown">
-                                      <li><a href="dashboard/student-dashboard.html">Dashboard</a></li>
-                                      <li><a href="dashboard/student-profile.html">Profile</a></li>
-<li><a href="dashboard/student-message.html">Message</a></li>
-                                      <li><a href="dashboard/student-enrolled-courses.html">Enrolled Courses</a></li>
-                                      <li><a href="dashboard/student-wishlist.html">Wishlist</a></li>
-                                      <li><a href="dashboard/student-reviews.html">Review</a></li>
-                                      <li><a href="dashboard/student-my-quiz-attempts.html">My Quiz</a></li>
-                                      <li><a href="dashboard/student-assignments.html">Assignment</a></li>
-                                      <li><a href="dashboard/student-settings.html">Settings</a></li>
-                                  </ul>
-                              </li>
-                          </ul>
+                    
                       </li>
 
                       <li class="menu-item-has-children"><a href="ecommerce/shop.html">eCommerce</a>
