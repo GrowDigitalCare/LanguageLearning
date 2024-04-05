@@ -1,208 +1,237 @@
-@extends('frontend.layouts.layout')
-@section('title')
+<!DOCTYPE html>
+<html lang="en">
 
-    <head>
-        <title>Terms and Condition | Grow Digital Care</title>
-        <meta name="description" content="Terms and Condition" />
-        <meta name="keywords" content="Growdigitalcare" />
-    </head>
-@endsection
-@section('content')
-@if (Session::has('success'))
-<div class="alert alert-success">
-    {{ Session::get('success') }}
-    @php
-        Session::forget('success');
-    @endphp
-</div>
-@endif
-@if (Session::has('error'))
-<div class="alert alert-danger">
-    {{ Session::get('error') }}
-    @php
-        Session::forget('error');
-    @endphp
-</div>
-@endif
-   <!-- breadcrumbarea__section__start -->
-   <div class="breadcrumbarea" data-aos="fade-up">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-12">
-                <div class="breadcrumb__content__wraper">
-                    <div class="breadcrumb__title">
-                        <h2 class="heading">Lesson</h2>
-                    </div>
-                    <div class="breadcrumb__inner">
-                        <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li> Course Materials</li>
-                        </ul>
-                    </div>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Result</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
+        .result-container {
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
 
+        h1 {
+            color: #333;
+        }
 
-            </div>
+        .result-message {
+            margin-bottom: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+
+        .score {
+            font-size: 24px;
+            color: #blue;
+            font-weight: bold;
+        }
+
+        .try-again-btn {
+            display: inline-block;
+            background-color: blue;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .try-again-btn:hover {
+            background-color: #333;
+        }
+
+        .result-details {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .result-details p {
+            margin: 5px 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .result-container {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease-out, scaleIn 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0.8);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        .result-title {
+            color: #333;
+            font-size: 30px;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .result-message {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animated-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out;
+            animation: fadeIn 1s ease-out, slideIn 1s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(10px);
+            }
+
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        .animated-button:hover {
+            background-color: #0056b3;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="result-container">
+        <h1>Quiz Result</h1>
+        <p class="result-message">Congratulations! You've completed the quiz.</p>
+
+        <p class="score">Your Score: {{ $latestResult['attempt']->percentage }}%</p>
+        {{-- <p class="score">Your Score: {{ $latestResult['attempt']->marks_obtained }} / {{ $latestResult['total_marks'] }}</p> --}}
+
+        <div class="result-details">
+            <table style="width:100%">
+                <tr>
+                    <th>User Name:</th>
+                    <td>{{ $latestResult['attempt']->user->name }}</td>
+                </tr>
+                {{-- <tr>
+                    <th>Subject Name:</th>
+                    <td>{{ $latestResult['attempt']->subject->name }}</td>
+                </tr> --}}
+                <tr>
+                    <th>Test Title:</th>
+                    <td>{{ $latestResult['attempt']->test->title }}</td>
+                </tr>
+                <tr>
+                    <th>Total Marks (All Questions):</th>
+                    <td>{{ $latestResult['total_marks'] }}</td>
+                </tr>
+                <tr>
+                    <th>Marks Obtained (All Questions):</th>
+                    <td>{{ $latestResult['mark'] }}</td>
+                </tr>
+                <tr>
+                    <th>Total MCQs:</th>
+                    <td>{{ $latestResult['total_mcq'] }}</td>
+                </tr>
+                {{-- <tr>
+                    <th>MCQs Attempted:</th>
+                    <td>{{ $latestResult['attempt']->mcqs_attempted }}</td>
+                </tr>
+                <tr>
+                    <th>Marks Obtained (MCQs):</th>
+                    <td>{{ $latestResult['attempt']->mcqs_marks_obtained }}</td>
+                </tr> --}}
+                <tr>
+                    <th>Percentage:</th>
+                    <td>{{ number_format(($latestResult['attempt']->marks_obtained / $latestResult['total_marks']) * 100) }}%</td>
+                </tr>
+                <tr>
+                    <th>Remarks:</th>
+                    @if ($latestResult['passmarks'] <= $latestResult['mark'])
+                        <td style="color: green">Passed</td>
+                    @else
+                        <td style="color: red">Failed</td>
+                    @endif
+                </tr>
+            </table>
         </div>
+        <br><br>
+        <a href="/" class="try-again-btn">Back</a>
     </div>
+</body>
 
-    <div class="shape__icon__2">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__1" src="img/herobanner/herobanner__1.png" alt="photo">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__2" src="img/herobanner/herobanner__2.png" alt="photo">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__3" src="img/herobanner/herobanner__3.png" alt="photo">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__4" src="img/herobanner/herobanner__5.png" alt="photo">
-    </div>
-
-</div>
-<!-- breadcrumbarea__section__end-->
-
-
-<!-- tution__section__start -->
-<div class="tution sp_bottom_100 sp_top_100">
-<div class="container-fluid full__width__padding">
-
-<div class="row">
-  
-    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12" data-aos="fade-up">
-       
-
-                <div class="dashboard__table table-responsive">
-                    <h3>Quiz Result</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Quiz</th>
-                                <th>Qus</th>
-                                <th>TM</th>
-                                <th>CA</th>
-                                <th>Result</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th>
-                                    <p>December 26, 2024</p>
-                                    <span>Write a on yourself using the 5</span>
-                                    <p>Student: <a href="#">John Due</a></p>
-                                </th>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <p>8</p>
-                                </td>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <span class="dashboard__td">Pass</span>
-                                </td>
-                                <td>
-                                    <div class="dashboard__button__group">
-                                    <a class="dashboard__small__btn__2" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Edit</a>
-                                    <a class="dashboard__small__btn__2 dashboard__small__btn__3" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete</a>
-                                </div>
-                            </td>
-                            </tr>
-
-                            <tr class="dashboard__table__row">
-                                <th>
-                                    <p>December 26, 2024</p>
-                                    <span>Write a on yourself using the 5</span>
-                                    <p>Student: <a href="#">John Due</a></p>
-                                </th>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <p>8</p>
-                                </td>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <span class="dashboard__td">Pass</span>
-                                </td>
-                                <td>
-                                    <div class="dashboard__button__group">
-                                    <a class="dashboard__small__btn__2" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Edit</a>
-                                    <a class="dashboard__small__btn__2  dashboard__small__btn__3" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete</a>
-                                </div>
-                            </td>
-                            </tr>
-
-                            <tr>
-                                <th>
-                                    <p>December 26, 2024</p>
-                                    <span>Write a on yourself using the 5</span>
-                                    <p>Student: <a href="#">John Due</a></p>
-                                </th>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <p>8</p>
-                                </td>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <span class="dashboard__td">Pass</span>
-                                </td>
-                                <td>
-                                    <div class="dashboard__button__group">
-                                    <a class="dashboard__small__btn__2" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Edit</a>
-                                    <a class="dashboard__small__btn__2  dashboard__small__btn__3" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete</a>
-                                </div>
-                            </td>
-                            </tr>
-
-                            <tr class="dashboard__table__row">
-                                <th>
-                                    <p>December 26, 2024</p>
-                                    <span>Write a on yourself using the 5</span>
-                                    <p>Student: <a href="#">John Due</a></p>
-                                </th>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <p>8</p>
-                                </td>
-                                <td>
-                                    <p>4</p>
-                                </td>
-                                <td>
-                                    <span class="dashboard__td">Pass</span>
-                                </td>
-                                <td>
-                                    <div class="dashboard__button__group">
-                                    <a class="dashboard__small__btn__2" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg> Edit</a>
-                                    <a class="dashboard__small__btn__2  dashboard__small__btn__3" href="#">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg> Delete</a>
-                                </div>
-                            </td>
-                            </tr>
-                         
-                        </tbody>
-                    </table>
-                </div>
-
-
-        </div>
-    </div>
-
-</div>
-</div>
-</div>
-
-@endsection
+</html>

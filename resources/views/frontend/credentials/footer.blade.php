@@ -53,21 +53,20 @@
                       </div>
                       <div class="footerarea__list">
                           <ul>
+                            <li>
+                                <a href="/">Home</a>
+                            </li>
                               <li>
-                                  <a href="#">About Us</a>
+                                  <a href="/about">About Us</a>
+                              </li>
+                            
+                              <li>
+                                  <a href="/mediacenter">Media Center</a>
                               </li>
                               <li>
-                                  <a href="#">Teachers</a>
+                                  <a href="/course">Course</a>
                               </li>
-                              <li>
-                                  <a href="#">Partner</a>
-                              </li>
-                              <li>
-                                  <a href="#">Room-Details</a>
-                              </li>
-                              <li>
-                                  <a href="#">Gallery</a>
-                              </li>
+                              
                           </ul>
                       </div>
 
@@ -82,7 +81,7 @@
                       <div class="footerarea__list">
                           <ul>
                               <li>
-                                  <a href="#">Ui Ux Design</a>
+                                  <a href="/testyourskills">Test Your Skills</a>
                               </li>
                               <li>
                                   <a href="#">Web Development</a>

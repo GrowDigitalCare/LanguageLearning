@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Contact;
-use App\Models\User;
-use Illuminate\Http\Request;
-use Hash;
 use DB;
 use Auth;
+use Hash;
+use App\Models\User;
+use App\Models\Contact;
+use App\Models\AttemptsTest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminDashboardController extends Controller
 {
@@ -80,4 +81,16 @@ class AdminDashboardController extends Controller
     return redirect()->route('admin-dashboard')->with('info', 'Password changed successfully.');
     }
 
+    public function leaderboardtest(){
+        $leaderboard = AttemptsTest::with(['test', 'user'])
+        ->orderByDesc('marks_obtained')
+        ->get();
+        return view('backend.pages.questions.leaderboard', compact('leaderboard'));
+      }
+    
+      public function deletetestleaderboard($id){
+        $leaderboard=AttemptsTest::findOrfail($id);
+        $leaderboard->delete();
+        return redirect()->back()->with('warning','Data Deleted');
+    }
 }

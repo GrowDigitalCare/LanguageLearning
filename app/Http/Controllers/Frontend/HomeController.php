@@ -130,6 +130,13 @@ public function courseDetails($slug)
         $mediacenter = MediaCenter::where('slug', $slug)->first();
         return view('frontend.pages.mediacenterdetail', compact('related', 'mediacenter'));
     }
+      
+    public function testyourskill()
+    {
+        $testyourskill = Language::all();
+        return view('frontend.pages.testyourskills', compact('testyourskill'));
+    }
+
     public function showTest(Request $request, $slug)
     {
         $language = Language::where('slug', $slug)->firstOrFail();

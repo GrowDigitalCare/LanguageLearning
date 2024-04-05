@@ -63,6 +63,10 @@ Route::prefix('admin')->as('admin-')->group(function () {
         Route::get('deleteuser/{id}', 'deleteUser')->name('deleteuser');
         Route::get('messages', 'shoMessages')->name('messages');
         Route::get('delete/{id}', 'delete')->name('delete');
+        Route::get('testyourskills_leaderboard', 'leaderboardtest')->name('testyourskills_leaderboard');
+        Route::get('testyourskills_delete/{id}', 'deletetestleaderboard')->name('testyourskills_delete');
+
+
     });
 });
 Route::post('/update-status/{id}', [AdminDashboardController::class, 'updateStatus'])->name('update.status');
@@ -264,6 +268,7 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/lesson/{slug}/video', "showVideo")->name('lesson.video');
     Route::get('instructordetail/{name}/{id}', 'instructordetail')->name('instructordetail');
+    Route::get('/testyourskills', "testyourskill")->name('testyourskill');
 
     Route::get('language_test/{slug}', 'showTest')->name('language_test');
     Route::post('/language/{languageId}/test/submit', 'submitTest')->name('test.submit');

@@ -2,8 +2,8 @@
 @section('title')
 
     <head>
-        <title>Terms and Condition | Grow Digital Care</title>
-        <meta name="description" content="Terms and Condition" />
+        <title>{{ $language->name }} | Grow Digital Care</title>
+        <meta name="description" content="{{ $language->name }}" />
         <meta name="keywords" content="Growdigitalcare" />
     </head>
 @endsection
@@ -31,12 +31,12 @@
             <div class="col-xl-12">
                 <div class="breadcrumb__content__wraper">
                     <div class="breadcrumb__title">
-                        <h2 class="heading">Lesson</h2>
+                        <h2 class="heading">Language</h2>
                     </div>
                     <div class="breadcrumb__inner">
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li> Course Materials</li>
+                            <li>Test (Quiz)</li>
                         </ul>
                     </div>
                 </div>
@@ -48,10 +48,10 @@
     </div>
 
     <div class="shape__icon__2">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__1" src="img/herobanner/herobanner__1.png" alt="photo">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__2" src="img/herobanner/herobanner__2.png" alt="photo">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__3" src="img/herobanner/herobanner__3.png" alt="photo">
-        <img loading="lazy"  class=" shape__icon__img shape__icon__img__4" src="img/herobanner/herobanner__5.png" alt="photo">
+        <img loading="lazy"  class=" shape__icon__img shape__icon__img__1" src="{{asset('assets')}}/img/herobanner/herobanner__1.png" alt="photo">
+        <img loading="lazy"  class=" shape__icon__img shape__icon__img__2" src="{{asset('assets')}}/img/herobanner/herobanner__2.png" alt="photo">
+        <img loading="lazy"  class=" shape__icon__img shape__icon__img__3" src="{{asset('assets')}}/img/herobanner/herobanner__3.png" alt="photo">
+        <img loading="lazy"  class=" shape__icon__img shape__icon__img__4" src="{{asset('assets')}}/img/herobanner/herobanner__5.png" alt="photo">
     </div>
 
 </div>

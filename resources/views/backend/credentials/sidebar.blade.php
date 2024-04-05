@@ -143,6 +143,9 @@
                         <li class="submenu-item {{ Route::is('question-list') ? 'active' : '' }}">
                             <a href="{{ route('question-list') }}">Questions & Options</a>
                         </li>
+                        <li class="submenu-item {{ Route::is('admin-testyourskills_leaderboard') ? 'active' : '' }}">
+                            <a href="{{ route('admin-testyourskills_leaderboard') }}">LeaderBoard</a>
+                        </li>
                     </ul>
                 </li>
 
