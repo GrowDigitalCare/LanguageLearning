@@ -148,7 +148,7 @@
 
 
 <!-- .about__tap__section__end -->
-<div class="gridarea__2 sp_bottom_100 sp_top_80" data-aos="fade-up">
+{{-- <div class="gridarea__2 sp_bottom_100 sp_top_80" data-aos="fade-up">
     <div class="container-fluid full__width__padding">
 
         <div class="section__title">
@@ -163,12 +163,16 @@
             <div class="swiper featured__course">
                 <div class="swiper-wrapper">
 
+                    @foreach ($course as $course)
+    
+
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item column__custom__class swiper-slide">
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
-                                <a href="course-details.html"><img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_7.png" alt="grid"></a>
+                                <a href="{{ route('course_detail', $course->slug) }}"><img loading="lazy" 
+                                    src="{{ asset('/uploads/course/' . $course->image) }}" alt="grid"></a>
                                 <div class="gridarea__small__button gridarea__small__button__1">
-                                    <div class="grid__badge">Data & Tech</div>
+                                    <div class="grid__badge">{{$course->level}}</div>
                                 </div>
                                 <div class="gridarea__small__icon">
                                     <a href="#"><i class="icofont-heart-alt"></i></a>
@@ -179,29 +183,34 @@
                                 <div class="gridarea__list">
                                     <ul>
                                         <li>
-                                            <i class="icofont-book-alt"></i> 23 Lesson
+                                            <i class="icofont-money"></i>   {{ $course->price }}
                                         </li>
                                         <li>
-                                            <i class="icofont-clock-time"></i> 1 hr 30 min
+                                            <i class="icofont-clock-time"></i> {{ $course->course_duration }}
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="gridarea__heading">
-                                    <h3><a href="course-details.html">Foundation course to under stand
-                        about softwere</a></h3>
+                                    <h3><a href="{{ route('course_detail', $course->slug) }}">{{$course->title}}</a></h3>
                                 </div>
                                 <div class="gridarea__price">
-                                    $32.00 <del>/ $67.00</del>
-                                    <span> <del class="del__2">Free</del></span>
-
-                                </div>
+                                    <p>
+                                       <?php
+                                       $course1 = strip_tags($course->description);
+                                       $course2 = Str::limit($course1,80);
+                                     
+                                      ?>
+                                     
+                                        
+                                     {!! html_entity_decode($course2) !!} 
+                                    </p>
                                 <div class="gridarea__bottom">
 
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_small_1.jpg" alt="grid">
+                                            <img loading="lazy"  src="{{ asset('/uploads/course/' . $course->language->image) }}" alt="grid">
                                             <div class="gridarea__small__content">
-                                                <h6>Micle Jhon</h6>
+                                                <h6>{{ $course->language->name }}</h6>
                                             </div>
                                         </div>
                                     </a>
@@ -218,122 +227,42 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach          
+                </div>
+
+                <div class="slider__controls__wrap slider__controls__arrows">
+                    <div class="swiper-button-next arrow-btn"></div>
+                    <div class="swiper-button-prev arrow-btn"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div> --}}
+
+<div class="gridarea__2 sp_bottom_100 sp_top_80" data-aos="fade-up">
+    <div class="container-fluid full__width__padding">
+
+        <div class="section__title">
+
+            <div class="section__title__heading">
+                <h2>Featured Course</h2>
+            </div>
+        </div>
+
+        <div class="row row__custom__class">
+
+            <div class="swiper featured__course">
+                <div class="swiper-wrapper">
+                    @foreach ($course as $course)
+                                
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item column__custom__class swiper-slide">
                         <div class="gridarea__wraper">
                             <div class="gridarea__img">
-                                <a href="course-details.html"><img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_8.png" alt="grid"></a>
-                                <div class="gridarea__small__button">
-                                    <div class="grid__badge">Data & Tech</div>
-                                </div>
-                                <div class="gridarea__small__icon">
-                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                </div>
-
-                            </div>
-                            <div class="gridarea__content">
-                                <div class="gridarea__list">
-                                    <ul>
-                                        <li>
-                                            <i class="icofont-book-alt"></i> 23 Lesson
-                                        </li>
-                                        <li>
-                                            <i class="icofont-clock-time"></i> 1 hr 30 min
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="gridarea__heading">
-                                    <h3><a href="course-details.html">Foundation course to under stand
-                        about softwere</a></h3>
-                                </div>
-                                <div class="gridarea__price">
-                                    $32.00 <del>/ $67.00</del>
-                                    <span> <del class="del__2">Free</del></span>
-
-                                </div>
-                                <div class="gridarea__bottom">
-
-                                    <a href="instructor-details.html">
-                                        <div class="gridarea__small__img">
-                                            <img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_small_1.jpg" alt="grid">
-                                            <div class="gridarea__small__content">
-                                                <h6>Micle Jhon</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <div class="gridarea__star">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <span>(44)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item column__custom__class swiper-slide">
-                        <div class="gridarea__wraper">
-                            <div class="gridarea__img">
-                                <a href="course-details.html"><img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_9.png" alt="grid"></a>
-                                <div class="gridarea__small__button">
-                                    <div class="grid__badge">Data & Tech</div>
-                                </div>
-                                <div class="gridarea__small__icon">
-                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                </div>
-
-                            </div>
-                            <div class="gridarea__content">
-                                <div class="gridarea__list">
-                                    <ul>
-                                        <li>
-                                            <i class="icofont-book-alt"></i> 23 Lesson
-                                        </li>
-                                        <li>
-                                            <i class="icofont-clock-time"></i> 1 hr 30 min
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="gridarea__heading">
-                                    <h3><a href="course-details.html">Foundation course to under stand
-                        about softwere</a></h3>
-                                </div>
-                                <div class="gridarea__price">
-                                    $32.00 <del>/ $67.00</del>
-                                    <span> <del class="del__2">Free</del></span>
-
-                                </div>
-                                <div class="gridarea__bottom">
-
-                                    <a href="instructor-details.html">
-                                        <div class="gridarea__small__img">
-                                            <img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_small_1.jpg" alt="grid">
-                                            <div class="gridarea__small__content">
-                                                <h6>Micle Jhon</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <div class="gridarea__star">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <span>(44)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item column__custom__class swiper-slide">
-                        <div class="gridarea__wraper">
-                            <div class="gridarea__img">
-                                <a href="course-details.html"><img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_7.png" alt="grid"></a>
+                                <a href="{{ route('course_detail', $course->slug) }}">
+                                    <img loading="lazy"  src="{{ asset('/uploads/course/' . $course->image) }}" alt="grid"></a>
                                 <div class="gridarea__small__button gridarea__small__button__1">
-                                    <div class="grid__badge">Data & Tech</div>
+                                    <div class="grid__badge">{{$course->level}}</div>
                                 </div>
                                 <div class="gridarea__small__icon">
                                     <a href="#"><i class="icofont-heart-alt"></i></a>
@@ -344,157 +273,52 @@
                                 <div class="gridarea__list">
                                     <ul>
                                         <li>
-                                            <i class="icofont-book-alt"></i> 23 Lesson
+                                            <i class="icofont-book-alt"></i>  {{ $course->price }}
                                         </li>
                                         <li>
-                                            <i class="icofont-clock-time"></i> 1 hr 30 min
+                                            <i class="icofont-clock-time"></i>{{ $course->course_duration }}
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="gridarea__heading">
-                                    <h3><a href="course-details.html">Foundation course to under stand
-                        about softwere</a></h3>
+                                    <h3><a href="{{ route('course_detail', $course->slug) }}">{{$course->title}}</a></h3>
                                 </div>
                                 <div class="gridarea__price">
-                                    $32.00 <del>/ $67.00</del>
-                                    <span> <del class="del__2">Free</del></span>
-
+                                    {{-- $32.00 <del>/ $67.00</del>
+                                    <span> <del class="del__2">Free</del></span> --}}
+                                    <p>
+                                        <?php
+                                        $course1 = strip_tags($course->description);
+                                        $course2 = Str::limit($course1,80);
+                                      
+                                       ?>
+                                      
+                                         
+                                      {!! html_entity_decode($course2) !!} 
+                                     </p>
                                 </div>
                                 <div class="gridarea__bottom">
 
                                     <a href="instructor-details.html">
                                         <div class="gridarea__small__img">
-                                            <img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_small_1.jpg" alt="grid">
+                                            <img loading="lazy"  src="{{ asset('/uploads/language/' . $course->language->image) }}" alt="grid">
                                             <div class="gridarea__small__content">
-                                                <h6>Micle Jhon</h6>
+                                                <h6>{{ $course->language->name }}</h6>
                                             </div>
                                         </div>
                                     </a>
 
                                     <div class="gridarea__star">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <span>(44)</span>
+                                        <a class="default__button" href="{{ route('course_detail', $course->slug) }}">Read More
+                                            <i class="icofont-long-arrow-right"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item column__custom__class swiper-slide">
-                        <div class="gridarea__wraper">
-                            <div class="gridarea__img">
-                                <a href="course-details.html"><img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_8.png" alt="grid"></a>
-                                <div class="gridarea__small__button gridarea__small__button__1">
-                                    <div class="grid__badge">Data & Tech</div>
-                                </div>
-                                <div class="gridarea__small__icon">
-                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                </div>
-
-                            </div>
-                            <div class="gridarea__content">
-                                <div class="gridarea__list">
-                                    <ul>
-                                        <li>
-                                            <i class="icofont-book-alt"></i> 23 Lesson
-                                        </li>
-                                        <li>
-                                            <i class="icofont-clock-time"></i> 1 hr 30 min
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="gridarea__heading">
-                                    <h3><a href="course-details.html">Foundation course to under stand
-                        about softwere</a></h3>
-                                </div>
-                                <div class="gridarea__price">
-                                    $32.00 <del>/ $67.00</del>
-                                    <span> <del class="del__2">Free</del></span>
-
-                                </div>
-                                <div class="gridarea__bottom">
-
-                                    <a href="instructor-details.html">
-                                        <div class="gridarea__small__img">
-                                            <img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_small_1.jpg" alt="grid">
-                                            <div class="gridarea__small__content">
-                                                <h6>Micle Jhon</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <div class="gridarea__star">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <span>(44)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-12 grid-item column__custom__class swiper-slide">
-                        <div class="gridarea__wraper">
-                            <div class="gridarea__img">
-                                <a href="course-details.html"><img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_9.png" alt="grid"></a>
-                                <div class="gridarea__small__button gridarea__small__button__1">
-                                    <div class="grid__badge">Data & Tech</div>
-                                </div>
-                                <div class="gridarea__small__icon">
-                                    <a href="#"><i class="icofont-heart-alt"></i></a>
-                                </div>
-
-                            </div>
-                            <div class="gridarea__content">
-                                <div class="gridarea__list">
-                                    <ul>
-                                        <li>
-                                            <i class="icofont-book-alt"></i> 23 Lesson
-                                        </li>
-                                        <li>
-                                            <i class="icofont-clock-time"></i> 1 hr 30 min
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="gridarea__heading">
-                                    <h3><a href="course-details.html">Foundation course to under stand
-                        about softwere</a></h3>
-                                </div>
-                                <div class="gridarea__price">
-                                    $32.00 <del>/ $67.00</del>
-                                    <span> <del class="del__2">Free</del></span>
-
-                                </div>
-                                <div class="gridarea__bottom">
-
-                                    <a href="instructor-details.html">
-                                        <div class="gridarea__small__img">
-                                            <img loading="lazy"  src="{{asset('assets')}}/img/grid/grid_small_1.jpg" alt="grid">
-                                            <div class="gridarea__small__content">
-                                                <h6>Micle Jhon</h6>
-                                            </div>
-                                        </div>
-                                    </a>
-
-                                    <div class="gridarea__star">
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <i class="icofont-star"></i>
-                                        <span>(44)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                   
+               @endforeach
                 </div>
 
                 <div class="slider__controls__wrap slider__controls__arrows">
@@ -506,7 +330,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- brand__section__start -->
 <!-- <div class="brandarea__2">
@@ -1512,79 +1335,51 @@
             <div class="col-xl-12" data-aos="fade-up">
                 <div class="section__title__2 text-center teamarea__margin">
                     <div class="section__small__title">
-                        <span>News & Blog</span>
+                        <span>Media Center</span>
                     </div>
                     <div class="section__title__heading__2 section__title__heading__3 heading__fontsize__2">
-                        <h2>Latest News & Blogs</h2>
+                        <h2>Latest Media Center</h2>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
+            @foreach ($mediacenter as $media)
             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
                 <div class="single__blog__wraper">
                     <div class="single__blog__img">
-                        <img loading="lazy"  src="{{asset('assets')}}/img/blog/blog_5.png" alt="blog">
-                        <div class="single__blog__button">
-                            <a class="default__button" href="#">Story</a>
-                        </div>
+                        @if($media->videourl!="null")
+                        <iframe src="{{$media->videourl}}" style="width: 350px;height: 250px;" frameborder="0"></iframe>
+                        @elseif($media->image!="null")
+                        <a href="/mediacenterdetail/{{$media->slug}}">
+                      
+                        <img loading="lazy"  src="{{ asset('/uploads/mediacenter/' . $media->image) }}" alt="blog">
+                        @endif 
                     </div>
                     <div class="single__blog__content">
-                        <p>13 january 2024</p>
-                        <h4> <a href="#">Facebook design is dedicated to what's new in design </a></h4>
+                        <p>{{ $media->title }}</p>
+                        <h6> <a href="#">  <?php
+                            $media1 = strip_tags($media->description);
+                            $media2 = Str::limit($media1,80);
+                          
+                           ?>
+                          
+                             
+                          {!! html_entity_decode($media2) !!} </a></h6>
                         <div class="single__blog__bottom__button">
-                            <a href="#">Read More
+                            <a href="/mediacenterdetail/{{$media->slug}}">Read More
                     <i class="icofont-long-arrow-right"></i>
                    </a>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
-                <div class="single__blog__wraper">
-                    <div class="single__blog__img">
-                        <img loading="lazy"  src="{{asset('assets')}}/img/blog/blog_24.png" alt="blog">
-                        <div class="single__blog__button">
-                            <a class="default__button" href="#">Story</a>
-                        </div>
-                    </div>
-                    <div class="single__blog__content">
-                        <p>13 january 2024</p>
-                        <h4> <a href="#">Facebook design is dedicated to what's new in design </a></h4>
-                        <div class="single__blog__bottom__button">
-                            <a href="#">Read More
-                    <i class="icofont-long-arrow-right"></i>
-                   </a>
-                        </div>
-                    </div>
-                </div>
+           @endforeach
+           <div class="col-xl-12" data-aos="fade-up">
+            <div class="blogarea__bottom__button">
+                <a class="default__button" href="/mediacenter">MORE MEDIA CENTERS</a>
             </div>
-
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
-                <div class="single__blog__wraper">
-                    <div class="single__blog__img">
-                        <img loading="lazy"  src="{{asset('assets')}}/img/blog/blog_25.png" alt="blog">
-                        <div class="single__blog__button">
-                            <a class="default__button" href="#">Story</a>
-                        </div>
-                    </div>
-                    <div class="single__blog__content">
-                        <p>13 january 2024</p>
-                        <h4> <a href="#">Facebook design is dedicated to what's new in design </a></h4>
-                        <div class="single__blog__bottom__button">
-                            <a href="#">Read More
-                    <i class="icofont-long-arrow-right"></i>
-                   </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-12" data-aos="fade-up">
-                <div class="blogarea__bottom__button">
-                    <a class="default__button" href="#">MORE BLOG</a>
-                </div>
-            </div>
+        </div>
         </div>
     </div>
 </div>

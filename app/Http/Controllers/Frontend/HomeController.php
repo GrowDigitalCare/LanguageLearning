@@ -61,8 +61,10 @@ class HomeController extends Controller
 
     public function index()
     {   
+        $mediacenter = MediaCenter::orderBy('id', 'DESC')->limit(3)->get();
+        $course = Course::all();
        $language = Language::all();
-        return view('frontend.pages.index',compact('language'));
+        return view('frontend.pages.index',compact('mediacenter','language','course'));
     }
     
 
@@ -74,6 +76,25 @@ class HomeController extends Controller
     public function termsandconditions()
     {
         return view('frontend.pages.terms');
+    }
+    public function coursecat(Request $req)
+    {
+        $data1 = Language::all();
+        return response()->json(['data1' => $data1]);
+    }
+    public function getLanguagesByCategorySlug($slug)
+    {
+        // Find the category by slug
+        $language = Language::where('slug', $slug)->first();
+    
+        // If the category is found, retrieve its services
+        if ($language) {
+            $course = $language->course;
+            return view('frontend.pages.course_languages', compact('language', 'course'));
+        } else {
+            // Handle the case where the category is not found
+            return abort(404);
+        }
     }
     public function course()
     {

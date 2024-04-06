@@ -26,4 +26,8 @@ class Language extends Model
     {
         return $this->hasMany(Test::class);
     }
+    public function course()
+    {
+        return $this->hasMany(Course::class);
+    }
 }

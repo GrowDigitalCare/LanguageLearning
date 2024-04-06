@@ -85,17 +85,17 @@
 
         // Fetch portfolio categories
         $.ajax({
-            url: "/servicecat",
+            url: "/coursecat",
             type: 'GET',
             dataType: 'json',
             success: function (res) {
                 for (var i = 0; i < res.data1.length; i++) {
                     html += `<li class="nav-item">
-                                <a href="/servicecategory/${res.data1[i]['slug']}" style="cursor:pointer" data-id="${res.data1[i]['id']}" class="nav-link">${res.data1[i]['name']}</a>
+                                <a href="/course_languages/${res.data1[i]['slug']}" style="cursor:pointer" data-id="${res.data1[i]['id']}" class="nav-link">${res.data1[i]['name']}</a>
                             </li>`;
                 }
                 console.log(html);
-                $(".service").append(html);
+                $(".course").append(html);
             }
         });
     });

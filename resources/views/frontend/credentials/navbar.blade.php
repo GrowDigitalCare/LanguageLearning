@@ -206,14 +206,21 @@
 
 
 
-                              <li>
+                              {{-- <li>
                                   <a href="/course">Courses </a>
                            
 
-                              </li>
+                              </li> --}}
 
 
                       
+                              <li><a class="headerarea__has__dropdown" href="/course">Course
+                                <i class="icofont-rounded-down"></i>
+                            </a>
+                            <ul class="headerarea__submenu course">
+                              
+                            </ul>
+                        </li>
                               <li><a href="/mediacenter">Media Center</a>
 
                     

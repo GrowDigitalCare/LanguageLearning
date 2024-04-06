@@ -43,8 +43,10 @@
     <div class="container">
    
         <div class="row">
+
             @foreach ($mediacenter as $media)
-            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12" data-aos="fade-up">
+            
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-12" data-aos="fade-up">
                 <div class="single__blog__wraper">
                     <div class="single__blog__img">
                         @if($media->videourl!="null")
@@ -73,8 +75,9 @@
                     </div>
                 </div>
             </div>
-@endforeach
-           
+            
+           @endforeach
+          
         </div>
     </div>
 </div>

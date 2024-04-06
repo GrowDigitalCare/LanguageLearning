@@ -2,8 +2,8 @@
 @section("title")
 
 <head>
-    <title>All Courses | Grow Digital Care</title>
-    <meta name="description" content="All Courses" />
+    <title>Language's Course | Grow Digital Care</title>
+    <meta name="description" content="Language's Course" />
     <meta name="keywords" content="Growdigitalcare" />
 </head>
 @endsection
@@ -16,12 +16,12 @@
             <div class="col-xl-12">
                 <div class="breadcrumb__content__wraper" data-aos="fade-up">
                     <div class="breadcrumb__title">
-                        <h2 class="heading">Courses</h2>
+                        <h2 class="heading">Language's Course</h2>
                     </div>
                     <div class="breadcrumb__inner">
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li>Courses</li>
+                            <li>Language's Course</li>
                         </ul>
                     </div>
                 </div>

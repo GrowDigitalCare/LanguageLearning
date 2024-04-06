@@ -263,6 +263,8 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('/mediacenter', "mediacenter")->name('mediacenter');
     Route::get('/mediacenterdetail/{slug}', "mediacenterdetail")->name('mediacenterdetail');
+    
+    Route::get('/course_languages/{slug}', "getLanguagesByCategorySlug")->name('course_languages');
     Route::get('/course', "course")->name('course');
     Route::get('/coursedetail/{slug}', "courseDetails")->name('course_detail');
 
@@ -276,4 +278,6 @@ Route::controller(HomeController::class)->group(function () {
 
 
 });
+Route::get('/coursecat', [HomeController::class, 'coursecat']);
+
 // Route::get('/quiz', [HomeController::class, 'showQuiz'])->name('quiz');
