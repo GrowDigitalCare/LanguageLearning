@@ -39,9 +39,9 @@ use App\Http\Controllers\Backend\Course\CourseInstructorController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/flipcard', function () {
+//     return view('frontend.pages.flipcard');
+// });
 
 
 //Admin Login Routes
@@ -257,6 +257,7 @@ Route::controller(HomeController::class)->group(function () {
 
     Route::get('about', 'about')->name('about');
 
+    Route::get('flipcard', 'flipcard')->name('flipcard');
 
     Route::get('contact', 'contact')->name('contact');
     Route::post('/contactuspost',"contactuspost");

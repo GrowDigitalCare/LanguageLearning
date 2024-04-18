@@ -137,7 +137,11 @@ public function courseDetails($slug)
        return view('frontend.pages.lecture', compact('lecture', 'relatedLectures'));
    }
    
-   
+   public function flipcard()
+   {
+       return view('frontend.pages.flipcard');
+   }
+
     public function mediacenter()
     {
         $mediacenter = MediaCenter::paginate(6);

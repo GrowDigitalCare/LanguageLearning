@@ -52,8 +52,7 @@
 <!-- breadcrumbarea__section__end-->
 
 <!-- .contact__section__start -->
-<div class="contact__section sp_top_100 sp_bottom_50" data-aos="fade-up">
-    <div class="container">
+
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
                 <div class="single__contact">
